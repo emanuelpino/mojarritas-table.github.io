@@ -1,0 +1,131 @@
+@import 'partials/reset' , 'partials/variables' , 'partials/mixins' , 'partials/keyframes';
+
+body {
+    background-color: #e0e0e0e0;
+    background-image: url(https://img.freepik.com/vector-premium/fondo-degradado-blanco-gris-abstracto-puntos-semitono-ilustracion-vectorial_230920-1601.jpg?w=2000);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container{
+    position: relative;
+}
+
+.header{
+    @include neo ( 1em, 1em);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 200px;
+    min-height: 80vh;
+
+    position: fixed;
+    top: calc( ( 100% - 80vh ) /2 );
+    left: 0;
+}
+
+.h1 {
+    margin: 2em 0;
+    text-align: center;
+}
+
+.ul{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 3em;
+}
+
+.ul .li{
+    width: 80%;
+    text-align: center;
+    padding: 1em;
+    transition: all .5s ease;
+}
+
+.ul .li:hover{
+    @include neo (1em, 1em);
+    cursor: pointer;
+}
+
+.main{
+    max-width: 80em;
+    margin-left: 200px;
+    margin-bottom: 6em;
+    padding: 0 2em;
+}
+
+.section-lol{
+    min-height: 80vh;
+    margin-top: 10vh;
+    padding: 2em;
+    @include neo (1em, 1em)
+}
+
+.ol{
+    margin-top: 1em;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+.user{
+    padding: 1em;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    @include neo (1em, .2em);
+    transition: all ease 1s;
+}
+
+.user:hover{
+    cursor: pointer;
+    @include neo (1em, 1em)
+}
+
+.container1{
+    @include neo (1em, 1em);
+    padding: 2em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4em;
+
+    position: relative;
+}
+
+.container2{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+
+.container2.active{
+    height: auto;
+    margin-top: 2em;
+}
+
+.league{
+    height: 12em;
+    position: absolute;
+    top: calc(50% - (12em/2));
+    left: -2em;
+}
+
+.profileIcon{
+    width: 3em;
+}
+
+.level{
+    margin-right: 6em;
+}
+
+.position1{
+    width: 2em;
+}
