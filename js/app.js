@@ -23,30 +23,30 @@ const users = [
     summoner: "TinkyWhisky",
     id: "20IHtTYspuRdpddTQQzMVev4mysHL-YGmozheBh43HEGrw",
   },
-  // {
-  //   summoner: "AltoGatito",
-  //   id: "KE2u2VebIJwLNzWY0LFA68hdgZ0jEYmKlYoGdSUgxbpG",
-  // },
   {
-    summoner: "Anto",
-    id: "w8K1313FWZeCB2IqXvlOUQ5nIdx-h4jRRNHQXw_Y4lMVHA",
+    summoner: "AltoGatito",
+    id: "KE2u2VebIJwLNzWY0LFA68hdgZ0jEYmKlYoGdSUgxbpG",
   },
   // {
-  //   summoner: "Mateo",
-  //   id: "_vK7CtP0mahpA9K5nUfbnJURlkA-62v-Ivwy6v5IdUM9ug",
+  //   summoner: "Anto",
+  //   id: "w8K1313FWZeCB2IqXvlOUQ5nIdx-h4jRRNHQXw_Y4lMVHA",
+  // },
+  // // {
+  // //   summoner: "Mateo",
+  // //   id: "_vK7CtP0mahpA9K5nUfbnJURlkA-62v-Ivwy6v5IdUM9ug",
+  // // },
+  // // {
+  // //   summoner: "CaritaDePan",
+  // //   id: "jusia-5pfmxJ-KiN65y6dxE4hw2LuwUOdpGxm8KJaQhI910",
+  // // },
+  // {
+  //   summoner: "Copi",
+  //   id: "uzwv1feeotoar42QU3FSPhUxMzx1-zWvV1UxioaHyJUEDQ",
   // },
   // {
-  //   summoner: "CaritaDePan",
-  //   id: "jusia-5pfmxJ-KiN65y6dxE4hw2LuwUOdpGxm8KJaQhI910",
+  //   summoner: "Totty",
+  //   id: "AysOUbHfLA4I_D6njPDEMOr3h9WAxNtYimObqwS_OSpcww",
   // },
-  {
-    summoner: "Copi",
-    id: "uzwv1feeotoar42QU3FSPhUxMzx1-zWvV1UxioaHyJUEDQ",
-  },
-  {
-    summoner: "Totty",
-    id: "AysOUbHfLA4I_D6njPDEMOr3h9WAxNtYimObqwS_OSpcww",
-  },
   // {
   //   summoner: "Dolape",
   //   id: "UTPb2VIZxB5IxIV2YyloJGQegoTlvFNcgeVvWwlhtD5h4A",
@@ -62,7 +62,7 @@ const users = [
 const ol = document.querySelector('.ol')
 
 // Consumo de la API de Riot Games
-const apiKey = "RGAPI-4f42057c-199a-4a37-92b7-699502e46ad8";
+const apiKey = "RGAPI-322f4c84-48d1-4917-ae05-bde9cfdcdc0b";
 const baseUrl = "https://la2.api.riotgames.com";
 const urlSummoner = "/lol/summoner/v4/summoners/";
 const urlLeague = "/lol/league/v4/entries/by-summoner/";
@@ -194,18 +194,22 @@ async function getInfo(summonerId) {
   const summonerInfo = await getSummonerInfo(summonerId);
   const summonerLeagueInfo = await getLeagueInfo(summonerId);
 
+  const summonerLeagueInfoSoloQ = summonerLeagueInfo.find(element => element.queueType === 'RANKED_SOLO_5x5')
+
+ if(summonerLeagueInfoSoloQ){
   const summonerNew = {
     name: `${summonerInfo.name}`,
     profileIconId: `${summonerInfo.profileIconId}`,
     summonerLevel: `${summonerInfo.summonerLevel}`,
-    tier: `${summonerLeagueInfo[0].tier}`,
-    rank: `${summonerLeagueInfo[0].rank}`,
-    wins: `${summonerLeagueInfo[0].wins}`,
-    losses: `${summonerLeagueInfo[0].losses}`,
-    leaguePoints: `${summonerLeagueInfo[0].leaguePoints}`,
+    tier: `${summonerLeagueInfoSoloQ.tier}`,
+    rank: `${summonerLeagueInfoSoloQ.rank}`,
+    wins: `${summonerLeagueInfoSoloQ.wins}`,
+    losses: `${summonerLeagueInfoSoloQ.losses}`,
+    leaguePoints: `${summonerLeagueInfoSoloQ.leaguePoints}`,
   };
-
   return summonerNew
+ }
+
 }
 
 function main(){
@@ -215,17 +219,7 @@ function main(){
   Promise.all(userss).then(data => {
     orderUsers(data)
   }).catch(error => {
-    console.log(error)
-  })
-}
-
-
-function order(users){
-  users.sort((a,b) => {
-    return b.summonerLevel - a.summonerLevel
-  })
-  users.map(user => {
-    createElementUser(user)
+    console.log('Error:', error)
   })
 }
 
