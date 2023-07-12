@@ -23,10 +23,10 @@ const users = [
     summoner: "TinkyWhisky",
     id: "20IHtTYspuRdpddTQQzMVev4mysHL-YGmozheBh43HEGrw",
   },
-  {
-    summoner: "AltoGatito",
-    id: "KE2u2VebIJwLNzWY0LFA68hdgZ0jEYmKlYoGdSUgxbpG",
-  },
+  // {
+  //   summoner: "AltoGatito",
+  //   id: "KE2u2VebIJwLNzWY0LFA68hdgZ0jEYmKlYoGdSUgxbpG",
+  // },
   // {
   //   summoner: "Anto",
   //   id: "w8K1313FWZeCB2IqXvlOUQ5nIdx-h4jRRNHQXw_Y4lMVHA",
@@ -43,10 +43,10 @@ const users = [
   //   summoner: "Copi",
   //   id: "uzwv1feeotoar42QU3FSPhUxMzx1-zWvV1UxioaHyJUEDQ",
   // },
-  // {
-  //   summoner: "Totty",
-  //   id: "AysOUbHfLA4I_D6njPDEMOr3h9WAxNtYimObqwS_OSpcww",
-  // },
+  {
+    summoner: "Totty",
+    id: "AysOUbHfLA4I_D6njPDEMOr3h9WAxNtYimObqwS_OSpcww",
+  },
   // {
   //   summoner: "Dolape",
   //   id: "UTPb2VIZxB5IxIV2YyloJGQegoTlvFNcgeVvWwlhtD5h4A",
@@ -62,7 +62,7 @@ const users = [
 const ol = document.querySelector('.ol')
 
 // Consumo de la API de Riot Games
-const apiKey = "RGAPI-322f4c84-48d1-4917-ae05-bde9cfdcdc0b";
+const apiKey = "RGAPI-2f79e971-6c45-46ce-adf5-5d25018ee569";
 const baseUrl = "https://la2.api.riotgames.com";
 const urlSummoner = "/lol/summoner/v4/summoners/";
 const urlLeague = "/lol/league/v4/entries/by-summoner/";
